@@ -9,7 +9,7 @@ export default async function Footer() {
         <h2 className="text-2xl">
           <Link href="/">{Title}</Link>
         </h2>
-        <div className="grid-cols-3 gap-10 flex">
+        <div className="grid grid-cols-3 gap-10">
           {NavList.map((item, i) => (
             <div key={item.title} className="flex">
               {i !== 0 && <Separator orientation="vertical" />}

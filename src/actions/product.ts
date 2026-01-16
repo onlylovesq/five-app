@@ -1,0 +1,13 @@
+"use server";
+
+import db from "@/lib/db";
+import { Product, ProductsAction } from "@/types/global";
+
+export async function productsAction(): Promise<ProductsAction> {
+  const result = (await db.query("select * from products")) as Product[];
+  return {
+    status: 200,
+    body: "get products success",
+    data: result,
+  };
+}
