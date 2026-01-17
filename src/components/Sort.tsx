@@ -3,10 +3,12 @@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { SortValue } from "@/types/global";
 import { SortTitle, SortList } from "@/lib/constants";
+import { useSortStore } from "@/store";
 
 export default function Sort() {
+  const { setValue } = useSortStore();
   const handleValueChange = (value: SortValue) => {
-    console.log(value);
+    setValue(value);
   };
 
   return (

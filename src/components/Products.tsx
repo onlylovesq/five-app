@@ -3,15 +3,24 @@
 // 所以要写成客户端组件
 "use client";
 
+import { ProductsTitle } from "@/lib/constants";
+import { useSortStore } from "@/store";
 import { Product } from "@/types/global";
 import Image from "next/image";
 
 export default function Products({ data }: { data: Product[] }) {
+  const { value } = useSortStore();
   const products = [...data];
+
+  if (value !== "latest") {
+    products.sort((a, b) =>
+      value === "low" ? a.price - b.price : b.price - a.price
+    );
+  }
 
   return (
     <div className="flex-1">
-      <h2 className="mb-8 text-4xl">All products</h2>
+      <h2 className="mb-8 text-4xl">{ProductsTitle}</h2>
       <div className="grid grid-cols-3 gap-4">
         {products.map((product: Product) => (
           <div
