@@ -15,7 +15,7 @@ export default async function Footer() {
             <Fragment key={item.title}>
               {i !== 0 && <Separator orientation="vertical" />}
               <div>
-                <span className="m-4 space-y-3">{item.title}</span>
+                <span>{item.title}</span>
                 <ul className="m-4 space-y-3">
                   {item.list.map((obj) => (
                     <li key={obj}>{obj}</li>

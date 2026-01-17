@@ -14,3 +14,9 @@ export type ProductsAction = {
   body: string;
   data: Product[];
 };
+
+export type ProductAction = {
+  status: number;
+  body: string;
+  data: Product;
+};
