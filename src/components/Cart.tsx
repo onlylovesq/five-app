@@ -17,11 +17,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { Button } from '@/components/ui/button'
 import Image from "next/image";
 import { useCartStore } from "@/store";
 
-export default function Cart() {
+export default function Cart({ status }: { status: number }) {
   const { cartList, removeFromCart, updateQuantity } = useCartStore();
   const quantityOptions = Array.from({ length: 10 }, (_, i) => i + 1);
   const handleClick = (index: number) => {
@@ -122,6 +122,20 @@ export default function Cart() {
                 )
                 .toFixed(2)}
             </p>
+            {status === 200 ? (
+              <Link href="/checkout">
+                <Button className="w-full">Checkout</Button>
+              </Link>
+            ) : (
+              <>
+                <Link href="/account">
+                  <Button className="w-full">Login</Button>
+                </Link>
+                <p className="text-sm text-slate-500 text-center mt-1">
+                  You need to login to checkout
+                </p>
+              </>
+            )}
           </div>
         </div>
       ) : (
